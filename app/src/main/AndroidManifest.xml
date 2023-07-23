@@ -16,13 +16,13 @@
         android:theme="@style/Theme.FakeStoreAPI"
         tools:targetApi="31">
         <activity
-            android:name=".activities.Menu"
-            android:exported="false" />
-        <activity
             android:name=".activities.Splash"
             android:exported="false" />
         <activity
             android:name=".activities.Acceso"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Menu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

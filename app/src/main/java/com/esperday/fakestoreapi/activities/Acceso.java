@@ -19,6 +19,7 @@ import com.esperday.fakestoreapi.api.RetrofitClient;
 import com.esperday.fakestoreapi.api.WebService;
 import com.esperday.fakestoreapi.dto.AccesoDTO;
 import com.esperday.fakestoreapi.dto.RespuestaAccesoDTO;
+import com.esperday.fakestoreapi.utils.SessionManger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,12 +30,14 @@ public class Acceso extends AppCompatActivity {
     EditText editUsuario, editPassword;
     Button btnEntrar;
     private static String token;
+    SessionManger sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceso);
 
+        sessionManager = new SessionManger(getApplicationContext());
         editUsuario = findViewById(R.id.editUser);
         editPassword = findViewById(R.id.editPassword);
 
@@ -75,7 +78,8 @@ public class Acceso extends AppCompatActivity {
                         @Override
                         public void run() {
                             token = response.body().getToken();
-                            startActivity(new Intent(Acceso.this, Menu.class).putExtra("obtenertoekn",token));
+                            startActivity(new Intent(Acceso.this, Menu.class).putExtra("obtenertoken",token));
+                            sessionManager.crearLoginSession(accesoDTO);
                             finish();
                         }
                     },700);
