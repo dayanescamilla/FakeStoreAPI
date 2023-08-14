@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.esperday.fakestoreapi.activities.Acceso;
+import com.esperday.fakestoreapi.activities.HuellaDigital;
 import com.esperday.fakestoreapi.activities.Splash;
 import com.esperday.fakestoreapi.dto.AccesoDTO;
 
@@ -40,6 +41,12 @@ public class SessionManger {
     public void revisarAcceso(){
         if (!this.isLoggedIn()){
             Intent intent = new Intent(ctx, Acceso.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            ctx.startActivity(intent);
+        }else {
+            Intent intent = new Intent(ctx, HuellaDigital.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

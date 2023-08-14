@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FakeStoreAPI"
         tools:targetApi="31">
         <activity
+            android:name=".activities.HuellaDigital"
+            android:exported="false" />
+        <activity
             android:name=".activities.Splash"
             android:exported="false" />
         <activity
